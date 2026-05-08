@@ -2,21 +2,26 @@
 
 Helps you write [Freezed](https://pub.dev/packages/freezed) annotated classes (compatible with **Freezed 2.x / Dart 3**) and run code generation directly from VS Code.
 
-👉 <https://marketplace.visualstudio.com/items?itemName=mthuong.vscode-flutter-freezed-helper>
+👉 [Flutter Freezed Model Helper on Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GuilhermeLague.vscode-flutter-freezed-helper)
+
+## Fork Notice
+
+This extension is a fork of [mthuong/vscode-flutter-freezed-helper](https://github.com/mthuong/vscode-flutter-freezed-helper), created because the original repository has been inactive for 5 years.
 
 ## Setup
 
 Add the following to your `pubspec.yaml`:
 
 ```yaml
-dev_dependencies:
-  build_runner:
-  freezed:
-  json_serializable:
-
 dependencies:
-  freezed_annotation:
-  json_annotation:
+  freezed_annotation: x.x.x
+  json_annotation: x.x.x
+
+dev_dependencies:
+  build_runner: x.x.x
+  freezed: x.x.x
+  json_serializable: x.x.x
+
 ```
 
 ## Features
@@ -89,6 +94,8 @@ abstract class UserModel with _$UserModel {
 }
 ```
 
+![frfp](media/frfp.gif)
+
 ### `frcp` — Add a Freezed class with private constructor
 
 Same as `frc` but includes `const ClassName._()`, which allows you to add custom methods and getters to the class — required by Freezed whenever you need methods (e.g. mapping a model to a domain entity):
@@ -109,6 +116,8 @@ abstract class UserModel with _$UserModel {
 }
 ```
 
+![frcp](media/frcp.gif)
+
 Cursor (`$0`) is placed inside the class body, ready to write the first method.
 
 ---
@@ -117,12 +126,11 @@ Cursor (`$0`) is placed inside the class body, ready to write the first method.
 
 Runs `dart run build_runner build` in the workspace root.
 
-![code gen](media/build.gif)
-
 ### Toggle Watch Mode
 
 Starts or stops `dart run build_runner watch` to continuously regenerate code on file changes.
 
 ## Credits
 
-The idea for this extension came from aksharpatel47's extension <https://github.com/aksharpatel47/vscode_flutter_helper>
+This extension is a fork of [mthuong/vscode-flutter-freezed-helper](https://github.com/mthuong/vscode-flutter-freezed-helper), created because the original repository has been inactive for 5 years.
+

@@ -1,13 +1,13 @@
 {
   "name": "vscode-flutter-freezed-helper",
-  "displayName": "Flutter freezed Helpers",
-  "description": "Helper utilities for flutter projects",
-  "version": "0.1.0",
-  "publisher": "mthuong",
+  "displayName": "Flutter Freezed Model Helper",
+  "description": "Helper for generating Freezed model classes in Flutter projects. Provides code snippets and a watch mode for automatic code generation.",
+  "version": "1.0.0",
+  "publisher": "GuilhermeLague",
   "icon": "media/flutter.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mthuong/vscode-flutter-freezed-helper"
+    "url": "https://github.com/guilhermelague/vscode-flutter-freezed-helper"
   },
   "engines": {
     "vscode": "^1.62.0"
