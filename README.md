@@ -2,7 +2,7 @@
 
 Helps you write [Freezed](https://pub.dev/packages/freezed) annotated classes (compatible with **Freezed 2.x / Dart 3**) and run code generation directly from VS Code.
 
-👉 [Flutter Freezed Model Helper on Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=GuilhermeLague.vscode-flutter-freezed-helper)
+👉 [Flutter Freezed Model Helper on Visual Studio Marketplace](marketplace.visualstudio.com/items?itemName=GuilhermeLague.vscode-flutter-freezed-model-helper)
 
 ## Fork Notice
 
