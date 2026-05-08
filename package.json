@@ -7,7 +7,7 @@
   "icon": "media/flutter.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/guilhermelague/vscode-flutter-freezed-model-helper"
+    "url": "https://github.com/guilhermelague/vscode-flutter-freezed-helper"
   },
   "engines": {
     "vscode": "^1.62.0"
