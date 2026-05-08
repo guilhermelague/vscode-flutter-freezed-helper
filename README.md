@@ -1,41 +1,127 @@
 # Flutter Freezed Helpers VSCode Extension
 
-This extension currently helps you to easily write `freezed` annotated classes and allows you to run code generation for those classes. You can also watch the files so that code generation is faster.
+Helps you write [Freezed](https://pub.dev/packages/freezed) annotated classes (compatible with **Freezed 2.x / Dart 3**) and run code generation directly from VS Code.
 
 👉 <https://marketplace.visualstudio.com/items?itemName=mthuong.vscode-flutter-freezed-helper>
 
-## Setup your flutter project for code generation for JSONSerializable annotations
+## Setup
 
-In your `pubspec.yaml` file add the following libraries in the `dev_dependencies` and `dependencies` section:
+Add the following to your `pubspec.yaml`:
 
-```ruby
+```yaml
 dev_dependencies:
-    // ...
-    build_runner:
-    freezed:
-    json_serializable:
+  build_runner:
+  freezed:
+  json_serializable:
 
 dependencies:
-    // ...
-    freezed_annotation:
-    json_annotation:
+  freezed_annotation:
+  json_annotation:
 ```
 
 ## Features
 
-### Snippet for setting up a file with freezed annotated classes: `frf`
+### `frf` — Setup a new file with a Freezed class
+
+Expands to a complete file skeleton with imports, `part` directives and a model class compatible with Freezed 2.x / Dart 3:
+
+```dart
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'my_model.freezed.dart';
+part 'my_model.g.dart';
+
+@freezed
+abstract class MyModel with _$MyModel {
+
+  const factory MyModel({
+    required String id,
+  }) = _MyModel;
+
+  factory MyModel.fromJson(Map<String, dynamic> json) =>
+      _$MyModelFromJson(json);
+}
+```
 
 ![frf](media/frf.gif)
 
-### Snippet for creating freezed annotated model: `frc`
+### `frc` — Add a Freezed class
+
+Expands to a standalone Freezed class body, useful when the file is already set up:
+
+```dart
+@freezed
+abstract class MyModel with _$MyModel {
+
+  const factory MyModel({
+    required String id,
+  }) = _MyModel;
+
+  factory MyModel.fromJson(Map<String, dynamic> json) =>
+      _$MyModelFromJson(json);
+}
+```
 
 ![frc](media/frc.gif)
 
-### Run Code Gen for freezed annotated classes
+### `frfp` — Setup a new file with a Freezed class with private constructor
+
+Same as `frf` but includes `const ClassName._()`, which allows you to add custom methods and getters to the class — required by Freezed whenever you need methods (e.g. mapping a model to a domain entity):
+
+```dart
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'my_model.freezed.dart';
+part 'my_model.g.dart';
+
+@freezed
+abstract class UserModel with _$UserModel {
+  const UserModel._(); // enables custom methods
+
+  const factory UserModel({
+    required String id,
+  }) = _UserModel;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  UserEntity toEntity() => UserEntity(id: id);
+}
+```
+
+### `frcp` — Add a Freezed class with private constructor
+
+Same as `frc` but includes `const ClassName._()`, which allows you to add custom methods and getters to the class — required by Freezed whenever you need methods (e.g. mapping a model to a domain entity):
+
+```dart
+@freezed
+abstract class UserModel with _$UserModel {
+  const UserModel._(); // enables custom methods
+
+  const factory UserModel({
+    required String id,
+  }) = _UserModel;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  UserEntity toEntity() => UserEntity(id: id);
+}
+```
+
+Cursor (`$0`) is placed inside the class body, ready to write the first method.
+
+---
+
+### Run Code Gen
+
+Runs `dart run build_runner build` in the workspace root.
 
 ![code gen](media/build.gif)
 
-### Have build runner watch the freezed annotated classes and generate code on changes
+### Toggle Watch Mode
+
+Starts or stops `dart run build_runner watch` to continuously regenerate code on file changes.
 
 ## Credits
 
