@@ -1,17 +1,19 @@
 {
-  "Create a freezed Class": {
+  "Create a Freezed Class": {
     "prefix": "frc",
     "body": [
       "@freezed",
-      "class $1 with _$$1 {",
+      "abstract class $1 with _$$1 {",
       "",
-      "\tfactory $1() = _$1;",
+      "\tconst factory $1({",
+      "\t\trequired String id,",
+      "\t}) = _$1;",
       "",
-      "\tfactory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);",
-      "\tMap<String, dynamic> toJson() => _$$1ToJson(this);",
+      "\tfactory $1.fromJson(Map<String, dynamic> json) =>",
+      "\t\t\t_$$1FromJson(json);",
       "}"
     ],
-    "description": "Creates a freezed Class inside a dartlang file. Useful for flutter and dart for web."
+    "description": "Creates a Freezed 2.x / Dart 3 compatible class. Uses abstract class, const factory and named parameters."
   },
   "Setup file for freezed annotation & Code Gen": {
     "prefix": "frf",
@@ -22,13 +24,59 @@
       "part '$TM_FILENAME_BASE.g.dart';",
       "",
       "@freezed",
-      "class $1 with _$$1 {",
+      "abstract class $1 with _$$1 {",
       "",
-      "\tfactory $1() = _$1;",
+      "\tconst factory $1({",
+      "\t\trequired String id,",
+      "\t}) = _$1;",
       "",
-      "\tfactory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);",
+      "\tfactory $1.fromJson(Map<String, dynamic> json) =>",
+      "\t\t\t_$$1FromJson(json);",
       "}"
     ],
-    "description": "Setup a file which will have freezed annotated classes."
+    "description": "Sets up a Dart file with Freezed 2.x / Dart 3 compatible imports, part directives and a model class."
+  },
+  "Create a Freezed Class with private constructor": {
+    "prefix": "frcp",
+    "body": [
+      "@freezed",
+      "abstract class $1 with _$$1 {",
+      "\tconst $1._();",
+      "",
+      "\tconst factory $1({",
+      "\t\trequired String id,",
+      "\t}) = _$1;",
+      "",
+      "\tfactory $1.fromJson(Map<String, dynamic> json) =>",
+      "\t\t\t_$$1FromJson(json);",
+      "",
+      "\t$0",
+      "}"
+    ],
+    "description": "Creates a Freezed class with a private constructor, enabling custom methods and getters. Useful for model-to-entity conversion."
+  },
+  "Setup file for freezed annotation with private constructor": {
+    "prefix": "frfp",
+    "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.freezed.dart';",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@freezed",
+      "abstract class $1 with _$$1 {",
+      "\tconst $1._();",
+      "",
+      "\tconst factory $1({",
+      "\t\trequired String id,",
+      "\t}) = _$1;",
+      "",
+      "\tfactory $1.fromJson(Map<String, dynamic> json) =>",
+      "\t\t\t_$$1FromJson(json);",
+      "",
+      "\t$0",
+      "}"
+    ],
+    "description": "Sets up a Dart file with imports, part directives and a Freezed class with a private constructor. Enables custom methods/getters for model-to-entity conversion."
   }
 }
