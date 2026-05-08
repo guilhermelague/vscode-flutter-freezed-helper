@@ -1,5 +1,5 @@
 {
-  "name": "vscode-flutter-freezed-helper",
+  "name": "vscode-flutter-freezed-model-helper",
   "displayName": "Flutter Freezed Model Helper",
   "description": "Helper for generating Freezed model classes in Flutter projects. Provides code snippets and a watch mode for automatic code generation.",
   "version": "1.0.0",
@@ -7,7 +7,7 @@
   "icon": "media/flutter.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/guilhermelague/vscode-flutter-freezed-helper"
+    "url": "https://github.com/guilhermelague/vscode-flutter-freezed-model-helper"
   },
   "engines": {
     "vscode": "^1.62.0"
@@ -24,11 +24,11 @@
     "commands": [
       {
         "command": "flutterFreezedHelper.genModel",
-        "title": "Flutter Freezed Helper: Code gen for freezed Classes"
+        "title": "Flutter Freezed Model Helper: Code gen for freezed Classes"
       },
       {
         "command": "flutterFreezedHelper.genModelWatch",
-        "title": "Flutter Freezed Helper: Toggle Watch mode for Code gen for freezed Classes"
+        "title": "Flutter Freezed Model Helper: Toggle Watch mode for Code gen for freezed Classes"
       }
     ],
     "snippets": [
