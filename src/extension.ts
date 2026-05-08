@@ -32,19 +32,17 @@ export function activate(context: vscode.ExtensionContext) {
     () => {
       // The code you place here will be executed every time your command is executed
 
+      const cwd = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
       let process = spawn(
-        "flutter",
+        "dart",
         [
-          "packages",
-          "pub",
           "run",
           "build_runner",
-          "build",
-          "--delete-conflicting-outputs"
+          "build"
         ],
         {
           shell: true,
-          cwd: vscode.workspace.rootPath,
+          cwd,
           // detached: true
         }
       );
@@ -80,18 +78,15 @@ export function activate(context: vscode.ExtensionContext) {
       } else {
         vscode.window.showInformationMessage("Started Codegen Process");
         _watchProcess = spawn(
-          "flutter",
+          "dart",
           [
-            "packages",
-            "pub",
             "run",
             "build_runner",
-            "watch",
-            "--delete-conflicting-outputs"
+            "watch"
           ],
           {
             shell: true,
-            cwd: vscode.workspace.rootPath
+            cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath
             //   detached: true
           }
         );
