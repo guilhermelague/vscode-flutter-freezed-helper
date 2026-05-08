@@ -1,18 +1,30 @@
 import * as assert from 'assert';
 import { before } from 'mocha';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-// import * as myExtension from '../extension';
 
 suite('Extension Test Suite', () => {
-	before(() => {
-		vscode.window.showInformationMessage('Start all tests.');
-	});
+  before(() => {
+    vscode.window.showInformationMessage('Start all tests.');
+  });
 
-	test('Sample test', () => {
-		assert.equal(-1, [1, 2, 3].indexOf(5));
-		assert.equal(-1, [1, 2, 3].indexOf(0));
-	});
+  test('Both commands are registered', async () => {
+    const commands = await vscode.commands.getCommands(true);
+    assert.ok(
+      commands.includes('flutterFreezedHelper.genModel'),
+      'genModel command should be registered'
+    );
+    assert.ok(
+      commands.includes('flutterFreezedHelper.genModelWatch'),
+      'genModelWatch command should be registered'
+    );
+  });
+
+  test('Workspace folder is accessible', () => {
+    // Validates that the workspace API used by the extension resolves correctly.
+    // In a test environment the workspace may have no folders; the important
+    // thing is that the API does not throw.
+    const folders = vscode.workspace.workspaceFolders;
+    assert.ok(folders === undefined || Array.isArray(folders));
+  });
 });
